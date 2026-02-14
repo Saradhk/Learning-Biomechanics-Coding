@@ -16,7 +16,7 @@ This repository contains a specialized MATLAB toolset developed to process and a
 * Includes a built-in interpreter for clinical significance (based on a 10% asymmetry threshold).
 
 **4. Advanced Visualization**
-* Generates Mean ± SD shaded area plots (using fill) to visualize gait stability and variability.
+* Generates Mean ± SD shaded area plots (using fill) to visualize gait stability and variability. [Gait Analysis Output!](Gait_Analysis_Project/Figures/Knee_Angle_Mean_SD_left_leg.png)
 * Automatic phase labeling (STANCE vs. SWING) on the kinematic plots.
 
 ## 📊 Data Source & Attribution
