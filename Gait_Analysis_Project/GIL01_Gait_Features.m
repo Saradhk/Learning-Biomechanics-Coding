@@ -13,6 +13,16 @@ kneeL = T.knee_angle_l;
 HipR = T.hip_flexion_r;
 HipL = T.hip_flexion_l;
 
+% Noise Filtering Section
+%fs = 120;  % rate fc
+%fc = 6;    % cut off
+%[b, a] = butter(4, fc/(fs/2), 'low'); % Butterworth Filter 4 rate
+% filtering all
+%kneeL_f = filtfilt(b, a, kneeL);
+%kneeR_f = filtfilt(b, a, kneeR);
+%HipL_f = filtfilt(b, a, HipL); 
+%HipR_f = filtfilt(b, a, HipR); 
+
 %Finding heal stricks 
 [pks, HS_R_indices] = findpeaks(HipR, 'MinPeakDistance', min_dist);
 [pks2, HS_L_indices] = findpeaks(HipL,'MinPeakDistance', min_dist); 
@@ -41,6 +51,17 @@ for i = 1: length(HS_L_indices) - 1
     normalized_stride = interp1(old_x, one_stride, new_x);
     all_strides_L = [all_strides_L; normalized_stride];
 end
+
+% Another way to make smoother/don't work - at first getting raw data
+%mean_kneeL_raw = mean(all_strides_kneeL, 1);
+%mean_kneeR_raw = mean(all_strides_kneeR, 1);
+%std_kneeL_raw = std(all_strides_kneeL, 0, 1);
+%std_kneeR_raw = std(all_strides_kneeR, 0, 1);
+% making smoother around 10 - we can change the number
+%mean_kneeL = smoothdata(mean_kneeL_raw, 'movmean', 10);
+%mean_kneeR = smoothdata(mean_kneeR_raw, 'movmean', 10);
+%std_kneeL = smoothdata(std_kneeL_raw, 'movmean', 10);
+%std_kneeR = smoothdata(std_kneeR_raw, 'movmean',10);
 
 %Mean of Right and Left knee Flexion
 mean_kneeR = mean(all_strides_R,1); 
@@ -178,3 +199,4 @@ title('Knee Angle Mean \pm SD (Left Leg)');
 xlabel('Gait Cycle (%)');
 ylabel('Angle (deg)');
 grid on;
+
