@@ -133,6 +133,13 @@ knee_velocity = diff(mean_kneeL);
 toe_off_knee = max_vel_idx + 40 - 5; % 5% before the peak speed, its toe off
 fprintf('Toe-off estimation from Knee: %.2f%%\n', toe_off_knee);
 
+%ROM
+rom_kneeR = max(mean_kneeR) - min(mean_kneeR);
+rom_kneeL = max(mean_kneeL) - min(mean_kneeL);
+fprintf('---kinemataic Results---');
+fprintf('Knee ROM(Right): %.2f degrees\n', rom_kneeR);
+fprintf('Knee ROM(Left): %.2f degrees\n', rom_kneeL)
+
 %Figures
 figure(1)
 plot(HipR);
@@ -199,4 +206,5 @@ title('Knee Angle Mean \pm SD (Left Leg)');
 xlabel('Gait Cycle (%)');
 ylabel('Angle (deg)');
 grid on;
+
 
