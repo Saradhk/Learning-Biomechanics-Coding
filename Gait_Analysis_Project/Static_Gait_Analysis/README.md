@@ -9,6 +9,7 @@ This folder contains the initial analysis performed on a static dataset ('GIL01_
   - Used **Hip Flexion** peaks to identify gait events.
   - Methodology: Searching for local maxima ($pks$) as the hip reaches maximum flexion during a typical step.
 - **Toe-Off Estimation:** The toe-off point was calculated dynamically by identifying the specific kinematic change (Max Flexion) in the knee profile, even within the minimal oscillations of the static data.
+- **No Noise Filtering:** To preserve the original signal integrity and observe raw sensor behavior in a static state, no digital filtering (e.g., Butterworth) was applied.
 - **Signal Processing:** Includes the **Alternative Smoother** method to handle noise in low-amplitude signals.
 
 ## Observations
