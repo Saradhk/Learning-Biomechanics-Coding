@@ -24,7 +24,7 @@ HipL = T.hip_flexion_l;
 %HipR_f = filtfilt(b, a, HipR);
 
 % Finding vallies in knee that show heal stricks
-[~, HS_R_indices] = findpeaks(-kneeR, 'MinPeakDistance', 50);
+[~, HS_R_indices] = findpeaks(-kneeR, 'MinPeakDistance', 50);     %using - to find minimum angles of knee as the knee is on the extension at that time
 [~, HS_L_indices] = findpeaks(-kneeL, 'MinPeakDistance', 50);
 %adding manually to make a matrics based on the plot
 HS_L_indices = [HS_L_indices, 160]; %adding 160 manually as we only had 1 vally in left side, and it makes it impossible to build a stride
@@ -153,14 +153,14 @@ figure(1)
 plot(kneeR); %plot knee as we calculate hs based on knee data in dynamic
 hold on
 plot(HS_R_indices,kneeR(HS_R_indices),'ro');
-title('Comparing Heal Strikes and Right Hip felxtion peaks');
+title('Comparing Heal Strikes and Right knee minimum angles');
 hold off
 
 figure(2)
 plot(kneeL);
 hold on
 plot(HS_L_indices,kneeL(HS_L_indices),'ro');
-title('Comparing Heal Strikes and Left Hip felxtion peaks');
+title('Comparing Heal Strikes and Left knee minimum angles');
 hold off
 
 figure(3)
@@ -230,3 +230,4 @@ grid on;
 %[max_var, column_idx] = max(variations);
 
 %fprintf('max changes; %.2f\n', column_idx, max_var);
+
