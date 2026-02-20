@@ -14,26 +14,20 @@ HipR = T.hip_flexion_r;
 HipL = T.hip_flexion_l;
 
 % Noise Filtering Section
-fs = 120;  % rate fc
-fc = 6;    % cut off
-[b, a] = butter(4, fc/(fs/2), 'low'); % Butterworth Filter 4 rate
+%fs = 120;  % rate fc
+%fc = 6;    % cut off
+%[b, a] = butter(4, fc/(fs/2), 'low'); % Butterworth Filter 4 rate
 % filtering all
-kneeL_f = filtfilt(b, a, kneeL);
-kneeR_f = filtfilt(b, a, kneeR);
-HipL_f = filtfilt(b, a, HipL); 
-HipR_f = filtfilt(b, a, HipR);
-
-%Finding heal stricks  - Hip based
-%[pks, HS_R_indices] = findpeaks(HipR, 'MinPeakDistance', min_dist);
-%[pks2, HS_L_indices] = findpeaks(HipL,'MinPeakDistance', min_dist); 
-%d = diff(HS_R_indices); cheking the distance of peaks 
-%d2 = diff (HS_L_indices);
+%kneeL_f = filtfilt(b, a, kneeL);
+%kneeR_f = filtfilt(b, a, kneeR);
+%HipL_f = filtfilt(b, a, HipL); 
+%HipR_f = filtfilt(b, a, HipR);
 
 % Finding vallies in knee that show heal stricks
 [~, HS_R_indices] = findpeaks(-kneeR, 'MinPeakDistance', 50);
 [~, HS_L_indices] = findpeaks(-kneeL, 'MinPeakDistance', 50);
 %adding manually to make a matrics based on the plot
-HS_L_indices = [HS_L_indices, 160];
+HS_L_indices = [HS_L_indices, 160]; %adding 160 manually as we only had 1 vally in left side, and it makes it impossible to build a stride
 
 % Showing number of them in each side
 fprintf('right heal stricks: %d\n', length(HS_R_indices));
@@ -74,16 +68,6 @@ for i = 1: length(HS_L_indices) - 1
     all_strides_kneeL = [all_strides_kneeL; normalized_stride];
 end
 
-% Another way to make smoother/don't work - at first getting raw data
-%mean_kneeL_raw = mean(all_strides_kneeL, 1);
-%mean_kneeR_raw = mean(all_strides_kneeR, 1);
-%std_kneeL_raw = std(all_strides_kneeL, 0, 1);
-%std_kneeR_raw = std(all_strides_kneeR, 0, 1);
-% making smoother around 10 - we can change the number
-%mean_kneeL = smoothdata(mean_kneeL_raw, 'movmean', 10);
-%mean_kneeR = smoothdata(mean_kneeR_raw, 'movmean', 10);
-%std_kneeL = smoothdata(std_kneeL_raw, 'movmean', 10);
-%std_kneeR = smoothdata(std_kneeR_raw, 'movmean',10);
 
 %Mean of Right and Left knee Flexion
 mean_kneeR = mean(all_strides_kneeR,1); 
@@ -166,7 +150,7 @@ fprintf('Knee ROM(Left): %.2f degrees\n', rom_kneeL);
 %Figures
 figure(1)
 
-plot(kneeR);
+plot(kneeR); %plot knee as we calculate hs based on knee data in dynamic
 hold on
 plot(HS_R_indices,kneeR(HS_R_indices),'ro');
 title('Comparing Heal Strikes and Right Hip felxtion peaks');
@@ -199,14 +183,6 @@ grid on;
 hold on;
 line([toe_off_knee toe_off_knee], ylim, 'Color', 'k', 'LineStyle', '--');
 legend('Right Knee', 'Left Knee','Toe Off');
-
-figure(5)
-%x = 1:100;
-%upper_line = mean_kneeL + std_kneeL;
-%lower_line = mean_kneeL - std_kneeL;
-%fill([x,fliplr(x)], [upper_line,fliplr(lower_line)],'b','FaceAlpha',0.2);
-%hold on;
-%plot(x, mean_kneeL,'r','LineWidth',2);
 
 figure(5)
 x = 1:100;
@@ -252,4 +228,5 @@ grid on;
 %all_data = table2array(T);
 %variations = max(all_data) - min(all_data);
 %[max_var, column_idx] = max(variations);
+
 %fprintf('max changes; %.2f\n', column_idx, max_var);
