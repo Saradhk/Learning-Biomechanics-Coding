@@ -132,6 +132,20 @@ end
 %title(['Hip Angle - Selected Toe Off at ', num2str(toe_off_idx), '%']);
 %grid on;
 
+% Cadence
+total_time_sec = time(end) - time(1); % Whole time
+num_steps = length(HS_R_indices) + length(HS_L_indices); %cadences of two legs
+cadence = (num_steps / total_time_sec) * 60;
+
+fprintf('--- Spatio-temporal Parameters ---\n');
+fprintf('Cadence: %.2f steps/min\n', cadence);
+
+% Stride Duration
+if length(HS_R_indices) >= 2
+    stride_duration = time(HS_R_indices(2)) - time(HS_R_indices(1));
+    fprintf('Average Stride Duration: %.2f seconds\n', stride_duration);
+end
+
 % Differation of knee
 knee_velocity = diff(mean_kneeL); 
 % The peak point of knee flexion
@@ -230,4 +244,5 @@ grid on;
 %[max_var, column_idx] = max(variations);
 
 %fprintf('max changes; %.2f\n', column_idx, max_var);
+
 
