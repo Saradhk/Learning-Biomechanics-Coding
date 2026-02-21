@@ -18,6 +18,13 @@ This repository contains a specialized MATLAB toolset developed to process and a
 **4. Advanced Visualization**
 * Generates Mean ± SD shaded area plots (using fill) to visualize gait stability and variability. [Gait Analysis Output!](Gait_Analysis_Project/Figures/Knee_Angle_Mean_SD_left_leg.png)
 * Automatic phase labeling (STANCE vs. SWING) on the kinematic plots.
+  
+**5. Spatio-Temporal Validation**
+* **Static Noise vs. Actual Gait:** Observation: Static trials showed an unrealistic Cadence (~255 steps/min).
+* Insight: This was identified as sensor micro-oscillations/noise being captured as peaks. It serves as a perfect example of why thresholding is critical in real-world biomechanics.
+
+* **Dynamic Gait Metrics:** Result: Captured a Stride Duration of 0.67s and a Cadence of 157 steps/min.
+* Conclusion: Despite the "Slow" label in the source file, the kinematic analysis proves a rapid pace, showcasing the tool's ability to validate trial metadata against actual movement data.
 
 ## 🔍 Static vs. Dynamic Benchmarking
 During development, the toolset was validated across two distinct data states: 
