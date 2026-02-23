@@ -43,6 +43,6 @@ The data used in this project is sourced from **SimTK**, a protected repository 
 The dataset is used in accordance with the license provided by the authors on SimTK for research and educational purposes. To respect the original creators' copyright, the raw data file is not redistributed here. 
 To reproduce the results, please download the original data from the link above.
 
-## 🛠 Future Roadmap
+## 🛠 Future Roadmap.
 
 [ ] Spatio-temporal parameters: Add calculation for Cadence and Stride Length.
