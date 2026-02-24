@@ -19,12 +19,14 @@ This repository contains a specialized MATLAB toolset developed to process and a
 * Generates Mean ± SD shaded area plots (using fill) to visualize gait stability and variability. [Gait Analysis Output!](Gait_Analysis_Project/Figures/Knee_Angle_Mean_SD_left_leg.png)
 * Automatic phase labeling (STANCE vs. SWING) on the kinematic plots.
   
-**5. Spatio-Temporal Validation**
-* **Static Noise vs. Actual Gait:** Observation: Static trials showed an unrealistic Cadence (~255 steps/min).
-* Insight: This was identified as sensor micro-oscillations/noise being captured as peaks. It serves as a perfect example of why thresholding is critical in real-world biomechanics.
-
-* **Dynamic Gait Metrics:** Result: Captured a Stride Duration of 0.67s and a Cadence of 157 steps/min.
-* Conclusion: Despite the "Slow" label in the source file, the kinematic analysis proves a rapid pace, showcasing the tool's ability to validate trial metadata against actual movement data.
+**5. Spatio-Temporal & Kinematic Validation**
+ * **Static Noise vs. Actual Gait:**
+   - **Observation:** Static trials initially showed an unrealistic Cadence (~255 steps/min) with 0.00 m Stride Length and 0.00 m/s Velocity.
+   - **Insight:** This confirmed that while the algorithm detected sensor micro-oscillations (noise) as "steps," the spatial calculation correctly identified zero displacement. This highlights the importance of combining temporal data with spatial metrics to validate real movement.
+* **Dynamic Gait Metrics (Right Leg Focus):**
+  - **Result:** Captured a Stride Duration of 0.68s, a Cadence of 157 steps/min, a Stride Length of 0.42m, and a Walking Speed of 0.61 m/s.
+  - **Right Leg Priority:** These spatial metrics were specifically calculated for the Right Leg. This strategic decision was made because the Right Leg provided a complete and continuous gait cycle, whereas the Left Leg data was truncated. This ensures the reported velocity and stride length are 100% data-driven.
+  - **Conclusion:** Despite the "Slow" label in the source metadata, the quantitative analysis (0.61 m/s) provides an objective measure of the subject's pace, showcasing the tool's ability to audit and validate trial metadata against actual kinematic performance.
 
 ## 🔍 Static vs. Dynamic Benchmarking
 During development, the toolset was validated across two distinct data states: 
@@ -44,5 +46,5 @@ The dataset is used in accordance with the license provided by the authors on Si
 To reproduce the results, please download the original data from the link above.
 
 ## 🛠 Future Roadmap.
-
-[ ] Spatio-temporal parameters: Add calculation for Cadence and Stride Length.
+[X] Signal Filtering: Implement a 4th-order zero-phase Butterworth low-pass filter to handle skin-marker artifacts.
+[X] Spatio-temporal parameters: Add calculation for Cadence and Stride Length.
