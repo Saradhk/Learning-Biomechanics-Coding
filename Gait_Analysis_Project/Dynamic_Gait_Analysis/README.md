@@ -12,7 +12,7 @@ This folder represents the final refined analysis using **Inverse Kinematics (IK
 4. **Manual Stride Correction (Left Leg):**
    - **Observation:** The recording for the left leg was truncated, showing only one valid "valley."
    - **Solution:** To maintain the matrix structure and proceed with the symmetry analysis, a manual frame (160) was assigned as the second event to facilitate the exercise.
-5. **patio-Temporal Analysis (Right Leg Focus):**
+5. **Spatio-Temporal Analysis (Right Leg Focus):**
    - Stride Length: 0.42 meters
    - Walking Speed: 0.61 m/s
 -  **Why only the Right Leg?**
