@@ -47,4 +47,5 @@ To reproduce the results, please download the original data from the link above.
 
 ## 🛠 Future Roadmap.
 [X] Signal Filtering: Implement a 4th-order zero-phase Butterworth low-pass filter to handle skin-marker artifacts.
+
 [X] Spatio-temporal parameters: Add calculation for Cadence and Stride Length.
