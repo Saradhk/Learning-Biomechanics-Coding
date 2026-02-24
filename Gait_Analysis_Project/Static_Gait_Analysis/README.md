@@ -11,7 +11,10 @@ This folder contains the initial analysis performed on a static dataset ('GIL01_
 - **Toe-Off Estimation:** The toe-off point was calculated dynamically by identifying the specific kinematic change (Max Flexion) in the knee profile, even within the minimal oscillations of the static data.
 - **No Noise Filtering:** To preserve the original signal integrity and observe raw sensor behavior in a static state, no digital filtering (e.g., Butterworth) was applied.
 - **Signal Processing:** Includes the **Alternative Smoother** method to handle noise in low-amplitude signals.
-
+- **patio-Temporal Results:**
+  - Stride Length: 0.00 meters
+  - Walking Speed: 0.00 m/s
+  - **Analysis:** The zero-value results for both length and speed objectively confirm that the subject remained in a fixed position. This serves as a vital control check to ensure the algorithm doesn't "hallucinate" movement from static sensor noise.
 ## Observations
 - **Range of Motion (ROM):** The analysis correctly identified a near-zero ROM (<1 degree), confirming the static nature of the data.
 - **Inference:** While the code executed perfectly, the lack of displacement confirmed that these sensors were recording a non-moving subject.
