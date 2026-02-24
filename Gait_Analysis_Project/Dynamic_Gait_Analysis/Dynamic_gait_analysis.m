@@ -146,6 +146,19 @@ if length(HS_R_indices) >= 2
     fprintf('Average Stride Duration: %.2f seconds\n', stride_duration);
 end
 
+% Stride length
+if ismember('pelvis_tx', T.Properties.VariableNames)
+    x_pos = T.pelvis_tx;
+    % Right leg stride length
+    stride_length_R = abs(x_pos(HS_R_indices(2)) - x_pos(HS_R_indices(1)));
+    
+    % Walking Speed
+    walking_speed = stride_length_R / stride_duration;
+    
+    fprintf('Stride Length: %.2f meters\n', stride_length_R);
+    fprintf('Walking Speed: %.2f m/s\n', walking_speed);
+end
+
 % Differation of knee
 knee_velocity = diff(mean_kneeL); 
 % The peak point of knee flexion
@@ -244,5 +257,6 @@ grid on;
 %[max_var, column_idx] = max(variations);
 
 %fprintf('max changes; %.2f\n', column_idx, max_var);
+
 
 
