@@ -12,7 +12,13 @@ This folder represents the final refined analysis using **Inverse Kinematics (IK
 4. **Manual Stride Correction (Left Leg):**
    - **Observation:** The recording for the left leg was truncated, showing only one valid "valley."
    - **Solution:** To maintain the matrix structure and proceed with the symmetry analysis, a manual frame (160) was assigned as the second event to facilitate the exercise.
-5. **No Noise Filtering:** To preserve the original signal integrity and observe raw sensor behavior in a static state, no digital filtering (e.g., Butterworth) was applied.
+5. **patio-Temporal Analysis (Right Leg Focus):**
+   - Stride Length: 0.42 meters
+   - Walking Speed: 0.61 m/s
+-  **Why only the Right Leg?**
+In this specific trial, spatio-temporal parameters were extracted exclusively from the Right Leg data. This decision was made because the Right Leg provided two clear, consecutive Heel Strike events, allowing for a 100% data-driven calculation. The Left Leg data in this specific recording was truncated, requiring a manual frame estimation (Frame 160) for symmetry cycles, which is less reliable for calculating precise physical displacement. By prioritizing the Right Leg, we ensure the integrity and clinical accuracy of the reported walking speed and stride length.
+
+6. **No Noise Filtering:** To preserve the original signal integrity and observe raw sensor behavior in a static state, no digital filtering (e.g., Butterworth) was applied.
 
 ## Results
 - **Dynamic ROM:** Successfully captured a natural knee flexion-extension range of ~46 degrees for the right knee and ~64 degrees for the left knee.
